@@ -8,7 +8,7 @@
 
 
 
-const int16_t M = 21; //Size of plan's in M x M table;
+const int16_t M = 201; //Size of plan's in M x M table;
 
 
 
@@ -34,7 +34,7 @@ struct Maps_with_forces Simple_Filing(struct Maps_with_forces K, double mass, in
 		for (i >= 0; i <= (M/2); i++){
 			for (j >= i + 1; j <= (M/2); j++){
                 if ( !(i == (M/2)) || !(j += (M/2)) ){
-                        K.A[i][j] = K.A[(M/2)][(M/2)] * (1./(((i - (M/2)) * (i - (M/2))) + ((j - (M/2)) * (j - (M/2))))); // I -> I
+                        K.A[i][j] = K.A[(M/2)][(M/2)] * (100000./(((i - (M/2)) * (i - (M/2))) + ((j - (M/2)) * (j - (M/2))))); // I -> I
                         K.A[j][i] = K.A[i][j];K.A[i][j];// I -> II
                         K.A[M - 1 -j][i] = K.A[i][j];// I -> III
                         K.A[M - 1 - i][j] = K.A[i][j];// I -> IV
@@ -154,20 +154,29 @@ int main(){
     struct Maps_with_forces K;
     int h = 0, N = 0;
 
-    std::cout << "enter number of points with mass: " << '\n';
-    std::cin >> N;
 
-    std::cout << "Enter mass and coordinates of points:" << '\n';
+    std::string line;
 
-    for ( h >= 0; h < N; h++){
-        int16_t a = 0;
-        int16_t b = 0;
-        double Mass = 0.0;
-        std::cin >> Mass >> a >> b;
-        K = Filing(K, Mass, M, a, b);
+    std::ifstream in("C:\Points.txt"); // окрываем файл для чтения
+    if (in.is_open())
+    {
+        in >> N;
+
+
+
+        for ( h >= 0; h < N; h++){
+            int16_t a = 0;
+            int16_t b = 0;
+            double Mass = 0.0;
+            in >> Mass >> a >> b;
+            K = Filing(K, Mass, M, a, b);
+        }
+
+        h = 0;
+
     }
 
-    h = 0;
+    in.close();     // закрываем файл
 
 
     std::ofstream out;          // поток для записи
@@ -177,7 +186,7 @@ int main(){
         Print_results_in_file(K);
     }
 
-    std::cout << "End of program" << std::endl;
+
 
 
     std::cout << "final" << '\n';
