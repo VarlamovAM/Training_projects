@@ -4,11 +4,11 @@ import Import_Data as ID
 import Export_Data as ED
 import Colour_Maker as CM
 import Check_Input as CI
+import Random_Input as RI
 import os
 
 
 def main():
-    global a, minimum, maximum
     width_of_window = int(1005)
     height_of_window = int(1005)
 
@@ -17,6 +17,7 @@ def main():
 
     while correct_input:
         N = input("Введите число точек: (Целое число, после ввода нажмите enter)")
+
 
         if not N.isdigit():
             print('Некорректный ввод, повторите попытку: ')
@@ -28,19 +29,27 @@ def main():
             print('Введите число, отличное от 0')
             continue
 
-        i = 0
-        while i < N:
-            points.append([input("Введите массу точки в десятичном формате (XXX.X), затем нажмите enter): "),
-                           input("Введите координату x точки (целое число, не больше 200), затем нажмите enter: "),
-                           input("Введите координату н точки (целое число, не больше 200), затем нажмите enter: ")])
 
-            if ((CI.is_digit(points[i][0]) is False or (points[i][0].isdigit())) or
-                    ((points[i][1].isdigit() is False) or (int(points[i][1]) < 0 or int(points[i][1]) > 200)) or
-                    ((points[i][2].isdigit() is False) or (int(points[i][2]) < 0 or int(points[i][2]) > 200))):
-                print('Вы ввели некоректные данные. Повторите ввод данный последней точки: ')
-                points.pop(i)
-            else:
-                i = i + 1
+        print('Как произвести заполнение данных о точках, вручную или случайным образом?')
+        mod = int(input('Введите 0, если заполнение будет в ручном режиме, или 1, если желаете заполнить данные'
+                        ' автоматически: '))
+
+        if mod == 1:
+            points = RI.Random_points(N)
+        else:
+            i = 0
+            while i < N:
+                points.append([input("Введите массу точки в десятичном формате (XXX.X), затем нажмите enter): "),
+                               input("Введите координату x точки (целое число, не больше 200), затем нажмите enter: "),
+                               input("Введите координату н точки (целое число, не больше 200), затем нажмите enter: ")])
+
+                if ((CI.is_digit(points[i][0]) is False or (points[i][0].isdigit())) or
+                        ((points[i][1].isdigit() is False) or (int(points[i][1]) < 0 or int(points[i][1]) > 200)) or
+                        ((points[i][2].isdigit() is False) or (int(points[i][2]) < 0 or int(points[i][2]) > 200))):
+                    print('Вы ввели некоректные данные. Повторите ввод данный последней точки: ')
+                    points.pop(i)
+                else:
+                    i = i + 1
 
         ED.Export_Data(points, N)
 
