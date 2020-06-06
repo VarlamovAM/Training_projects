@@ -2,7 +2,7 @@
 #include <iomanip>
 #include <string>
 #include <fstream>
-
+#include <cmath>
 
 
 
@@ -34,7 +34,7 @@ struct Maps_with_forces Simple_Filing(struct Maps_with_forces K, double mass, in
 		for (i >= 0; i <= (M/2); i++){
 			for (j >= i + 1; j <= (M/2); j++){
                 if ( !(i == (M/2)) || !(j += (M/2)) ){
-                        K.A[i][j] = K.A[(M/2)][(M/2)] * (100000./(((i - (M/2)) * (i - (M/2))) + ((j - (M/2)) * (j - (M/2))))); // I -> I
+                        K.A[i][j] = K.A[(M/2)][(M/2)] * (100000./((i - (M/2)) * (i - (M/2))) + ((j - (M/2)) * (j - (M/2)))); // I -> I
                         K.A[j][i] = K.A[i][j];K.A[i][j];// I -> II
                         K.A[M - 1 -j][i] = K.A[i][j];// I -> III
                         K.A[M - 1 - i][j] = K.A[i][j];// I -> IV
@@ -69,7 +69,7 @@ struct Maps_with_forces Filing(struct Maps_with_forces K, double mass, int16_t M
     for (i >= 0; i < M; i++){
         for (j >= 0; j < M; j++){
             if ( !(i == y) || !(j == x) ){
-                K.A[i][j] += (K.A[y][x] * (1./(((i - y) * (i - y)) + ((j - x) * (j - x)))));
+                K.A[i][j] += (K.A[y][x] * (1./sqrt(sqrt(((i - y) * (i - y)) + ((j - x) * (j - x))))));
             }
         }
         j = 0;
