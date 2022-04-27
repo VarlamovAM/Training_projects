@@ -1,0 +1,40 @@
+# depslib dependency file v1.0
+1651055077 source:c:\users\Антоний\onedrive\documents\git_varlamovam\training_projects\team_competitions_tree\team_competitions\src\competition_tree.cpp
+	"competition_tree.h"
+	<iostream>
+
+1651054888 c:\users\Антоний\onedrive\documents\git_varlamovam\training_projects\team_competitions_tree\team_competitions\include\competition_tree.h
+	<vector>
+	<node.h>
+
+1651055898 source:c:\users\Антоний\onedrive\documents\git_varlamovam\training_projects\team_competitions_tree\team_competitions\main.cpp
+	<iostream>
+	<vector>
+	<competition_tree.h>
+
+1651054950 c:\users\Антоний\onedrive\documents\git_varlamovam\training_projects\team_competitions_tree\team_competitions\include\node.h
+
+1651055940 source:c:\users\Антоний\onedrive\documents\git_varlamovam\training_projects\team_competitions_tree\team_competitions\src\node.cpp
+	"node.h"
+	<iostream>
+
+1651088760 source:c:\users\Антоний\onedrive\documents\git_varlamovam\training_projects\team_competitions\src\competition_tree.cpp
+	"competition_tree.h"
+	<iostream>
+	<vector>
+
+1651087250 c:\users\Антоний\onedrive\documents\git_varlamovam\training_projects\team_competitions\include\competition_tree.h
+	<vector>
+	<node.h>
+
+1651088468 c:\users\Антоний\onedrive\documents\git_varlamovam\training_projects\team_competitions\include\node.h
+
+1651082929 source:c:\users\Антоний\onedrive\documents\git_varlamovam\training_projects\team_competitions\src\node.cpp
+	"node.h"
+	<iostream>
+
+1651088179 source:c:\users\Антоний\onedrive\documents\git_varlamovam\training_projects\team_competitions\main.cpp
+	<iostream>
+	<vector>
+	<competition_tree.h>
+
